@@ -26,7 +26,10 @@ const images = [
 
 let currentPosition = 0;
 const items = document.querySelector('.items');
+const title = document.querySelector('.content h2');
+const didascalia = document.querySelector('.content p');
 createElements();
+content();
 
 const allItems = document.querySelectorAll('.item');
 
@@ -63,8 +66,9 @@ function createElements() {
     } else { 
         currentPosition = allItems.lenght - 1
     }
-        allItems[currentPosition].classList.add('active');
-
+    content();
+    allItems[currentPosition].classList.add('active');
+    
    });
    nextButton.addEventListener('click', function() {
     
@@ -74,7 +78,13 @@ function createElements() {
     } else {
         currentPosition = 0;
     }
+    content();
     allItems[currentPosition].classList.add('active');
 
      
    });
+
+   function content() {
+    title.innerText = images[currentPosition].title;
+    didascalia.innerText = images[currentPosition].text;
+   }
